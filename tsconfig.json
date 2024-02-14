@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "strict": true,
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "target": "ESNext",
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "rootDir": "./src",
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types"]
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
