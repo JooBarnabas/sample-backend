@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import IController from "./interfaces/controller.interface";
 import { config } from "dotenv";
 import mongoose from "mongoose";
+import errorMiddleware from "./middleware/error.middleware";
 
 export default class App {
   public app: express.Application;
@@ -26,6 +27,10 @@ export default class App {
     this.app.use(this.loggerMiddleware);
   }
 
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
+  }
+
   private initializeControllers(controllers: IController[]) {
     controllers.forEach((controller) => {
       this.app.use("/", controller.router);
@@ -40,6 +45,7 @@ export default class App {
       console.log("Connected to MongoDB server.");
       this.initializeMiddlewares();
       this.initializeControllers(controllers);
+      this.initializeErrorHandling();
       this.app.listen(PORT, () => {
         console.log(`App listening on the port ${PORT}`);
       });

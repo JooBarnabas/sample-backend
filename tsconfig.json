@@ -4,6 +4,8 @@
         "strict": true,
         "module": "CommonJS",
         "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
         "esModuleInterop": true,
         "target": "ESNext",
         "outDir": "./dist",
